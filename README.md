@@ -1,4 +1,4 @@
-# pokedex
+# pokedex-global66
 
 ## Project setup
 ```
