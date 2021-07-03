@@ -153,4 +153,5 @@ export default class PokemonInfo extends Vue {
 #pokemon-fake-copy
   height: 0
   width: 0
+  overflow: hidden
 </style>
