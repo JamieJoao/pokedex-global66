@@ -12,6 +12,8 @@ export default class Container extends Vue {}
 </script>
 
 <style lang="sass">
+@import '@/styles/_variables'
+
 .container
   width: 100%
   margin-left: auto
@@ -19,4 +21,6 @@ export default class Container extends Vue {}
 
   padding-left: 24px
   padding-right: 24px
+
+  max-width: $xs
 </style>
