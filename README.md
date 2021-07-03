@@ -1,4 +1,9 @@
-# Pokedex - Reto técnico de Global66
+# Pokedex - Reto técnico de Global66Cancel changes
+
+## Demo
+
+[Proyecto desplegado en Heroku](https://reto-tecnico-global66.herokuapp.com/#/)
+> Quisas deba esperar un poco la primera vez que cargue la aplicación, ya que heroku duerme los proyectos inactivos.
 
 ## Descripción
 
