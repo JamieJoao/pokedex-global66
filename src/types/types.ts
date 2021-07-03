@@ -1,0 +1,1 @@
+export type AvailableTabs = 'all' | 'favorites'

@@ -19,8 +19,8 @@ export default class Container extends Vue {}
   margin-left: auto
   margin-right: auto
 
-  padding-left: 24px
-  padding-right: 24px
+  padding-left: 30px
+  padding-right: 30px
 
   max-width: $xs
 </style>

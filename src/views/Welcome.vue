@@ -19,6 +19,8 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
+
+import router from "@/router";
 import { Container } from "@/components/layout";
 import { Button } from "@/components/common";
 
@@ -30,7 +32,7 @@ import { Button } from "@/components/common";
 })
 export default class Welcome extends Vue {
   goHome() {
-    console.log("Go Home!");
+    router.push('Home')
   }
 }
 </script>
@@ -69,7 +71,7 @@ export default class Welcome extends Vue {
 
   &-description
     font-size: 18px
-    font-size: medium
+    font-weight: 500
     margin-top: 30px
     text-align: center
 

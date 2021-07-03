@@ -21,7 +21,7 @@ export default class Input extends Vue {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 @import '@/styles/_mixins'
 
 .input
