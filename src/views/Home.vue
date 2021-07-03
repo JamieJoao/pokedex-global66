@@ -26,7 +26,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { State, Mutation, Action } from "vuex-class";
+import { State, Action } from "vuex-class";
 
 import { Container } from "@/components/layout";
 import {
@@ -38,8 +38,6 @@ import {
   PokemonInfo,
   Loader,
 } from "@/components/common";
-import { fetchPokemons } from "@/services";
-import { PokemonGeneralInfo } from "@/types/responses";
 
 @Component({
   components: {
@@ -56,9 +54,7 @@ import { PokemonGeneralInfo } from "@/types/responses";
 export default class Home extends Vue {
   @State loading!: boolean;
   @State showModal!: boolean;
-  @Action fillPokemonsAction!: (pokemons: PokemonGeneralInfo[]) => void;
-  @Action createPokemonsMapAction!: () => void;
-  @Mutation toggleLoading!: () => void;
+  @Action fetchPokemonsAction!: () => void;
 
   searchModel = "";
 
@@ -66,17 +62,8 @@ export default class Home extends Vue {
     this.showModal = !this.showModal;
   }
 
-  async fakeFetching() {
-    const pokemons = await fetchPokemons();
-    this.fillPokemonsAction(pokemons || []);
-    this.createPokemonsMapAction();
-
-    this.toggleLoading();
-  }
-
-  async mounted() {
-    this.toggleLoading();
-    setTimeout(this.fakeFetching, 1500);
+  mounted() {
+    this.fetchPokemonsAction()
   }
 }
 </script>
