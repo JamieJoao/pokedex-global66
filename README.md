@@ -1,4 +1,4 @@
-# Pokedex - Reto técnico de Global66Cancel changes
+# Pokedex - Reto técnico de Global66
 
 ## Demo
 
