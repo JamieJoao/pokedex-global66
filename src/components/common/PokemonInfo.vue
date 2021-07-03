@@ -11,7 +11,7 @@
       />
     </div>
 
-    <div class="pokemon-properties">
+    <div class="pokemon-properties" id="pokemon-copy">
       <div class="pokemon-property">
         <span>Name:</span>
         <span>{{ currentPokemon.name }}</span>
@@ -35,7 +35,7 @@
       <Fab v-model="model" />
     </div>
 
-    <div id="pokemon-fake-copy">{{ textToCopy }}</div>
+    <!-- <div id="pokemon-fake-copy">{{ textToCopy }}</div> -->
   </div>
 </template>
 
@@ -150,8 +150,8 @@ export default class PokemonInfo extends Vue {
       @include use-media(max, $xs)
         flex: 1
 
-#pokemon-fake-copy
-  height: 0
-  width: 0
-  overflow: hidden
+// #pokemon-fake-copy
+//   height: 0
+//   width: 0
+//   overflow: hidden
 </style>

@@ -32,7 +32,7 @@ import { Button } from "@/components/common";
 })
 export default class Welcome extends Vue {
   goHome() {
-    router.push('Home')
+    router.push('home')
   }
 }
 </script>

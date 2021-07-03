@@ -1,6 +1,6 @@
 export const copyClipboard = () => {
 
-  const copyNode = document.getElementById('pokemon-fake-copy')
+  const copyNode = document.getElementById('pokemon-copy')
     , selection = document.createRange()
 
   selection.selectNodeContents(copyNode!)
