@@ -1,16 +1,18 @@
 <template>
-  <div class="item">
+  <div class="item" @click="handleClickItem">
     <span class="item-title">
-      {{ title }}
+      {{ pokemonInfo.name }}
     </span>
 
-    <Fab v-model="model" />
+    <Fab v-model="pokemonInfo.favorite" />
   </div>
 </template>
 
 <script lang="ts">
+import { Mutation, Action } from "vuex-class";
 import { Vue, Component, Prop } from "vue-property-decorator";
 
+import { PokemonGeneralInfo } from "@/types/responses";
 import Fab from "./Fab.vue";
 
 @Component({
@@ -19,8 +21,15 @@ import Fab from "./Fab.vue";
   },
 })
 export default class Item extends Vue {
-  @Prop() title?: string;
-  model = true
+  @Prop() pokemonInfo!: PokemonGeneralInfo;
+
+  @Mutation toggleModal!: () => void;
+  @Action setCurrentPokemonAction!: (pokemon: PokemonGeneralInfo) => void;
+
+  handleClickItem() {
+    this.toggleModal();
+    this.setCurrentPokemonAction(this.pokemonInfo);
+  }
 }
 </script>
 
@@ -42,6 +51,7 @@ export default class Item extends Vue {
   &-title
     font-weight: 500
     font-size: 22px
+    text-transform: capitalize
 
     @include use-font(lato)
     @include use-theme(color, $gray-1)

@@ -6,6 +6,7 @@ import Item from './Item.vue'
 import Fab from './Fab.vue'
 import Modal from './Modal.vue'
 import PokemonInfo from './PokemonInfo.vue'
+import Loader from './Loader.vue'
 
 export {
   PokemonInfo,
@@ -16,4 +17,5 @@ export {
   List,
   Item,
   Fab,
+  Loader,
 }

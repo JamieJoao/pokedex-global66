@@ -1,17 +1,31 @@
 <template>
   <div class="footer">
     <Container class="footer-container">
-      <Button title="All" icon="list" :block="true" />
-      <Button title="Favorites" icon="star" :block="true" />
+      <Button
+        :class="{ 'footer-button-disabled': tabActive === 'favorites' }"
+        title="All"
+        icon="list"
+        :block="true"
+        :onClick="() => setTab('all')"
+      />
+      <Button
+        :class="{ 'footer-button-disabled': tabActive === 'all' }"
+        title="Favorites"
+        icon="star"
+        :block="true"
+        :onClick="() => setTab('favorites')"
+      />
     </Container>
   </div>
 </template>
 
 <script lang="ts">
+import { Mutation, State } from "vuex-class";
 import { Vue, Component } from "vue-property-decorator";
 
-import Button from './Button.vue';
-import { Container } from '@/components/layout'
+import Button from "./Button.vue";
+import { Container } from "@/components/layout";
+import { AvailableTabs } from "@/types/types";
 
 @Component({
   components: {
@@ -19,7 +33,10 @@ import { Container } from '@/components/layout'
     Container,
   },
 })
-export default class Footer extends Vue {}
+export default class Footer extends Vue {
+  @State tabActive!: AvailableTabs;
+  @Mutation setTab!: (tab: AvailableTabs) => void;
+}
 </script>
 
 <style lang="sass" scoped>
@@ -37,11 +54,13 @@ export default class Footer extends Vue {}
 
   @include use-theme(background-color, $neutral)
 
+  &-button-disabled,
+  &-button-disabled:hover
+    @include use-theme(background-color, $gray-3, false)
+
   &-container
     width: 100%
     display: flex
     justify-content: center
     column-gap: 15px
-
-
 </style>

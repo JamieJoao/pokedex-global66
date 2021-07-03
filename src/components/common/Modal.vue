@@ -3,7 +3,7 @@
     <div class="modal-overlay">
       <Container>
         <div class="modal-content">
-          <button class="button-close" @click="$emit('close')">
+          <button class="button-close" @click="toggleModal">
             <i class="fa fa-times-circle"></i>
           </button>
           <slot></slot>
@@ -14,6 +14,7 @@
 </template>
 
 <script lang="ts">
+import { Mutation } from "vuex-class";
 import { Vue, Component, Prop } from "vue-property-decorator";
 
 import { Container } from "@/components/layout";
@@ -25,11 +26,7 @@ import { Container } from "@/components/layout";
 })
 export default class Modal extends Vue {
   @Prop() visible?: boolean;
-  isActive = false;
-
-  mounted() {
-    this.isActive = this.visible!;
-  }
+  @Mutation toggleModal!: () => void;
 }
 </script>
 
@@ -67,6 +64,7 @@ export default class Modal extends Vue {
       border: none
       background-color: transparent
       cursor: pointer
+      z-index: 1
 
       i
         font-size: 26px

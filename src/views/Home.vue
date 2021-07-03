@@ -1,34 +1,32 @@
 <template>
   <div class="home">
-    <Container>
-      <Input
-        class="home-input"
-        placeholder="Search"
-        icon="search"
-        v-model="searchModel"
-      />
+    <div class="home-container" v-if="!loading">
+      <Container>
+        <Input
+          class="home-input"
+          placeholder="Search"
+          icon="search"
+          v-model="$store.state.filter"
+        />
 
-      <div class="home-empty-list" v-if="false">
-        <span>Uh-oh!</span>
-        <span>You look lost on your journey!</span>
+        <List class="home-list" />
+      </Container>
 
-        <Button title="Go back home" :onClick="goBack" />
-      </div>
+      <Modal v-if="showModal">
+        <PokemonInfo />
+      </Modal>
 
-      <List class="home-list" :items="itemsFabs" />
-    </Container>
-
-    <!-- <Button title="Launch Modal" :onClick="handleToggleModal" /> -->
-    <Modal v-if="showModal" @close="handleToggleModal">
-      <PokemonInfo />
-    </Modal>
-
-    <Footer />
+      <Footer />
+    </div>
+    <div v-else class="home-loader">
+      <Loader />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { State, Mutation, Action } from "vuex-class";
 
 import { Container } from "@/components/layout";
 import {
@@ -38,9 +36,10 @@ import {
   List,
   Modal,
   PokemonInfo,
+  Loader,
 } from "@/components/common";
-
-import router from "@/router";
+import { fetchPokemons } from "@/services";
+import { PokemonGeneralInfo } from "@/types/responses";
 
 @Component({
   components: {
@@ -51,20 +50,33 @@ import router from "@/router";
     List,
     Modal,
     PokemonInfo,
+    Loader,
   },
 })
 export default class Home extends Vue {
+  @State loading!: boolean;
+  @State showModal!: boolean;
+  @Action fillPokemonsAction!: (pokemons: PokemonGeneralInfo[]) => void;
+  @Action createPokemonsMapAction!: () => void;
+  @Mutation toggleLoading!: () => void;
+
   searchModel = "";
-  itemsAll: any[] = new Array(50).fill(1);
-  itemsFabs: any[] = new Array(4).fill(2);
-  showModal = true;
 
   handleToggleModal() {
     this.showModal = !this.showModal;
   }
 
-  goBack() {
-    router.back();
+  async fakeFetching() {
+    const pokemons = await fetchPokemons();
+    this.fillPokemonsAction(pokemons || []);
+    this.createPokemonsMapAction();
+
+    this.toggleLoading();
+  }
+
+  async mounted() {
+    this.toggleLoading();
+    setTimeout(this.fakeFetching, 3000);
   }
 }
 </script>
@@ -83,25 +95,13 @@ export default class Home extends Vue {
 
   &-list
     margin-top: 40px
+    margin-bottom: 100px
 
-  &-empty-list
-    margin-top: 50px
-    text-align: center
-
-    span
-      display: block
-
-      @include use-font(lato)
-
-      &:nth-child(1)
-        font-weight: bold
-        font-size: 36px
-        margin-bottom: 10px
-
-        @include use-theme(color, $gray-1)
-
-      &:nth-child(2)
-        font-size: 20px
-        font-weight: 500
-        margin-bottom: 25px
+  &-loader
+    width: 106px
+    height: 106px
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
 </style>
