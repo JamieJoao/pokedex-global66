@@ -10,6 +10,7 @@ Este proyecto es corresponde a la etapa de evaluación de habilidades técnicas 
 * Vuex
 * Vue Router
 * SASS
+* Consumo de API https://pokeapi.co/api/v2/pokemon/
 
 ## Lanzar proyecto
 
