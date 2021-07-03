@@ -31,9 +31,11 @@
     </div>
 
     <div class="pokemon-share">
-      <Button title="Share to my friends" />
+      <Button title="Share to my friends" :onClick="handleClickShare" />
       <Fab v-model="model" />
     </div>
+
+    <div id="pokemon-fake-copy">{{ textToCopy }}</div>
   </div>
 </template>
 
@@ -45,6 +47,7 @@ import Button from "./Button.vue";
 import Fab from "./Fab.vue";
 import { PokemonData, PokemonGeneralInfo } from "@/types/responses";
 import { fetchSinglePokemon } from "@/services";
+import { copyClipboard } from "@/utils";
 import { PokemonsMap } from "@/types/types";
 
 @Component({
@@ -75,12 +78,25 @@ export default class PokemonInfo extends Vue {
     this.setFavoriteAction(this.currentPokemon);
   }
 
+  handleClickShare() {
+    copyClipboard();
+  }
+
   get pokemonTypes() {
     return this.infoPokemon.types?.map((type) => type.type.name).join(", ");
   }
 
   get pokemonFigure() {
     return this.infoPokemon.sprites?.other?.["official-artwork"].front_default;
+  }
+
+  get textToCopy() {
+    return [
+      `Name: ${this.currentPokemon?.name.toUpperCase()}`,
+      `Weight: ${this.infoPokemon?.weight}`,
+      `Height: ${this.infoPokemon?.height}`,
+      `Types: ${this.pokemonTypes?.toUpperCase()}`,
+    ].join(", ");
   }
 }
 </script>
@@ -133,4 +149,8 @@ export default class PokemonInfo extends Vue {
     button
       @include use-media(max, $xs)
         flex: 1
+
+#pokemon-fake-copy
+  height: 0
+  width: 0
 </style>

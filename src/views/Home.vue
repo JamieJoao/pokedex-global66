@@ -76,7 +76,7 @@ export default class Home extends Vue {
 
   async mounted() {
     this.toggleLoading();
-    setTimeout(this.fakeFetching, 3000);
+    setTimeout(this.fakeFetching, 1500);
   }
 }
 </script>

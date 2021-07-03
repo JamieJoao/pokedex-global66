@@ -1,13 +1,13 @@
 <template>
-  <div class="about">
-    <Container class="about-container">
+  <div class="welcome">
+    <Container class="welcome-container">
       <img
-        class="about-image"
+        class="welcome-image"
         src="@/assets/images/pikachu-png.png"
         alt="Imagen de Pikachu"
       />
-      <span class="about-greeting">Welcome to Pokédex</span>
-      <span class="about-description">
+      <span class="welcome-greeting">Welcome to Pokédex</span>
+      <span class="welcome-description">
         The digital encyclopedia created by Professor Oak is an invaluable tool
         to Trainers in the Pokémon world.
       </span>
@@ -40,10 +40,11 @@ export default class Welcome extends Vue {
 <style lang="sass" scoped>
 @import '@/styles/_mixins'
 
-.about
+.welcome
   position: relative
   width: 100%
-  height: 100%
+  // height: 100%
+  height: 100vh
   display: flex
   justify-content: center
   align-items: center
