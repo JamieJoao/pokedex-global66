@@ -61,4 +61,4 @@ npm install animate.css
 
 ## Deploy
 
-[Proyecto desplegado](https://treelink-jm.herokuapp.com/)
+[Proyecto desplegado](https://reto-tecnico-global66.herokuapp.com/)
