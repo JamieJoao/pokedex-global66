@@ -2,8 +2,8 @@
   <div class="welcome">
     <Container class="welcome-container">
       <img
-        class="welcome-image"
-        src="@/assets/images/pikachu-png.png"
+        class="welcome-image animate__animated animate__bounceIn"
+        src="@/assets/images/pikachu.png"
         alt="Imagen de Pikachu"
       />
       <span class="welcome-greeting">Welcome to Pokédex</span>
