@@ -21,8 +21,7 @@ import Fab from "./Fab.vue";
   },
 })
 export default class Item extends Vue {
-  @Prop() pokemonInfo!: PokemonGeneralInfo;
-
+  @Prop() readonly pokemonInfo!: PokemonGeneralInfo;
   @Mutation toggleModal!: () => void;
   @Action setCurrentPokemonAction!: (pokemon: PokemonGeneralInfo) => void;
 

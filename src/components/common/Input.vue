@@ -15,9 +15,9 @@ import { Vue, Component, Prop, VModel } from "vue-property-decorator";
 
 @Component
 export default class Input extends Vue {
-  @Prop() placeholder?: string;
-  @Prop() icon?: string;
-  @VModel() model?: string;
+  @Prop() readonly placeholder?: string;
+  @Prop() readonly icon?: string;
+  @VModel() readonly model?: string;
 }
 </script>
 

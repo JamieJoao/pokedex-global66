@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { Mutation } from "vuex-class";
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component } from "vue-property-decorator";
 
 import { Container } from "@/components/layout";
 
@@ -25,7 +25,6 @@ import { Container } from "@/components/layout";
   },
 })
 export default class Modal extends Vue {
-  @Prop() visible?: boolean;
   @Mutation toggleModal!: () => void;
 }
 </script>

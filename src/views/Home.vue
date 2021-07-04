@@ -56,14 +56,8 @@ export default class Home extends Vue {
   @State showModal!: boolean;
   @Action fetchPokemonsAction!: () => void;
 
-  searchModel = "";
-
-  handleToggleModal() {
-    this.showModal = !this.showModal;
-  }
-
   mounted() {
-    this.fetchPokemonsAction()
+    this.fetchPokemonsAction();
   }
 }
 </script>

@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, VModel, Watch } from "vue-property-decorator";
+import { Vue, Component, VModel } from "vue-property-decorator";
 
 import Button from "./Button.vue";
 
@@ -27,23 +27,7 @@ import Button from "./Button.vue";
   },
 })
 export default class Fab extends Vue {
-  @VModel() model?: boolean;
-  // isChecked = false;
-
-  // @Watch("model")
-  // watchModel(val: string, oldVal: string) {
-  //   console.log({ val, oldVal });
-  // }
-
-  // mounted() {
-  //   if (this.model) this.isChecked = this.model
-  // }
-
-  // handleChange(e: any) {
-  //   const target: HTMLInputElement = e.target;
-
-  //   this.isChecked = target.checked;
-  // }
+  @VModel() readonly model?: boolean;
 }
 </script>
 
