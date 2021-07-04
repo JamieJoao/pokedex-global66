@@ -33,12 +33,17 @@ export default class Button extends Vue {
 
 <style lang="sass" scoped>
 @import '@/styles/_mixins'
+@import '@/styles/_variables'
 
 .button
-  padding: 11px 20px
+  padding: 0 20px
+  height: 44px
   border-radius: 60px
   border: none
   cursor: pointer
+  display: inline-flex
+  justify-content: center
+  align-items: center
 
   @include use-theme(background-color, $red-2)
 
@@ -58,9 +63,11 @@ export default class Button extends Vue {
 
   &-title
     font-size: 18px
-    font-weight: medium
+    font-weight: 500
 
   &-icon,
   &-title
     @include use-theme(color, $contrast)
+
+  @include use-media(max, $xs)
 </style>

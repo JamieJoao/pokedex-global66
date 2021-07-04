@@ -39,6 +39,7 @@ export default class Welcome extends Vue {
 
 <style lang="sass" scoped>
 @import '@/styles/_mixins'
+@import '@/styles/_variables'
 
 .welcome
   position: relative
@@ -68,6 +69,8 @@ export default class Welcome extends Vue {
     margin-top: 60px
 
     @include use-theme(color, $gray-1)
+    @include use-media(max, $xs)
+      margin-top: 30px
 
   &-description
     font-size: 18px
