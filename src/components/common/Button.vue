@@ -20,7 +20,7 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 @Component
 export default class Button extends Vue {
   @Prop() readonly title!: string;
-  @Prop() readonly disabled!: number;
+  @Prop() readonly disabled!: boolean;
   @Prop() readonly block!: boolean;
   @Prop() readonly icon?: string;
   @Prop() readonly onClick?: () => void;
