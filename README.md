@@ -1,5 +1,9 @@
 # Pokedex - Reto técnico de Global66
 
+## Actualización
+
+Este proyecto esta disponible también en Vue3 y Composition API [Pokedex Vue3](https://github.com/JamieJoao/pokedex-global66-vue3)
+
 ## Demo
 
 [Proyecto desplegado en Heroku](https://reto-tecnico-global66.herokuapp.com/#/)
